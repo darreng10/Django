@@ -23,22 +23,13 @@ def home(request):
     
     
     cases_monitor = {
-        'country' : "Global", # so Countries is one huge list [0] means first list and ['Country'] is the 1st item in that sublist
+        'country' : "Global", 
         'new_confirmed' : f"{packages_json['Global']['NewConfirmed']: ,d}",
         'total_confirmed' : f"{packages_json['Global']['TotalConfirmed']: ,d}",
         'total_recovered' : f"{packages_json['Global']['NewRecovered']: ,d}",
 
     }
     
-    country_list = df2['Country']
-
-    for country in country_list:
-        cases_monitor2 = {
-            'country' : df2.loc[df2['Country'] == country]['Country'].item(), # so Countries is one huge list [0] means first list and ['Country'] is the 1st item in that sublist
-            'new_confirmed' : df2.loc[df2['Country'] == country]['NewConfirmed'].item(),
-            'total_confirmed' : df2.loc[df2['Country'] == country]['TotalConfirmed'].item(),
-            'total_recovered' : df2.loc[df2['Country'] == country]['NewRecovered'].item(),
-        }
 
     def bubble():
         r = requests.get('https://api.covid19api.com/summary')
@@ -68,5 +59,5 @@ def home(request):
 
 
 
-    context = {'cases_monitor' : cases_monitor, 'country_list': country_list, 'cases_monitor2' : cases_monitor2, 'plot1': bubble()}
+    context = {'cases_monitor' : cases_monitor, 'plot1': bubble()}
     return render(request, 'figures/home.html', context)
