@@ -30,6 +30,7 @@ d = df(packages_json['Countries'])
 
 d['Country'].loc[(d['Country'] == 'United States of America')] = 'United States'
 
+
 input_countries = d['Country']
 
 # to generate 3 digit country codes from https://stackoverflow.com/questions/16253060/how-to-convert-country-names-to-iso-3166-1-alpha-2-values-using-python
@@ -41,6 +42,14 @@ codes = [countries.get(country, 'Unknown code') for country in input_countries]
 
 
 d['Country_Code3'] = df(codes)
+d['Country_Code3'].loc[(d['Country'] == 'Bolivia')] = 'BOL'
+d['Country_Code3'].loc[(d['Country'] == 'Venezuela (Bolivarian Republic)')] = 'VEN'
+d['Country_Code3'].loc[(d['Country'] == 'Korea (South)')] = 'KOR'
+d['Country_Code3'].loc[(d['Country'] == 'Congo (Kinshasa)')] = 'COD'
+d['Country_Code3'].loc[(d['Country'] == 'Taiwan, Republic of China')] = 'COD'
+d['Country_Code3'].loc[(d['Country'] == 'Syrian Arab Republic (Syria)')] = 'SYNS'
+
+	
 
 # -------------------------------------------------------------------------------------------
 
