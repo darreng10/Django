@@ -28,6 +28,8 @@ packages_str = json.dumps(packages_json, indent=2)
 
 d = df(packages_json['Countries'])
 
+d['Country'].loc[(d['Country'] == 'United States of America')] = 'United States'
+
 input_countries = d['Country']
 
 # to generate 3 digit country codes from https://stackoverflow.com/questions/16253060/how-to-convert-country-names-to-iso-3166-1-alpha-2-values-using-python
